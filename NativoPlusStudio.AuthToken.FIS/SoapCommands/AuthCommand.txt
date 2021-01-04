@@ -1,0 +1,9 @@
+﻿<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:fischex">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:chexAuthenticate>
+         <in0>{{UserName}}</in0>
+         <in1>{{Password}}</in1>
+      </urn:chexAuthenticate>
+   </soapenv:Body>
+</soapenv:Envelope>

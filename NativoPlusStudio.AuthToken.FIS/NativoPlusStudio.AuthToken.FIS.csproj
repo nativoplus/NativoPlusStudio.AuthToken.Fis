@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Handlebars.Net" Version="2.0.3" />
+    <PackageReference Include="NativoPlusStudio.AuthToken.Core" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SoapCommands\AuthCommand.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

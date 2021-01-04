@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NativoPlusStudio.AuthToken.FIS", "NativoPlusStudio.AuthToken.FIS\NativoPlusStudio.AuthToken.FIS.csproj", "{A7801E32-4513-4DC4-81F4-8751F5671C0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A970A231-5960-4227-8910-F8A2DDA76853}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NativoPlusStudio.AuthToken.FisTests", "NativoPlusStudio.AuthToken.FisTests\NativoPlusStudio.AuthToken.FisTests.csproj", "{9384518C-EDB6-4A0B-A51B-DBAD9610B253}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A7801E32-4513-4DC4-81F4-8751F5671C0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7801E32-4513-4DC4-81F4-8751F5671C0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7801E32-4513-4DC4-81F4-8751F5671C0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7801E32-4513-4DC4-81F4-8751F5671C0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9384518C-EDB6-4A0B-A51B-DBAD9610B253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9384518C-EDB6-4A0B-A51B-DBAD9610B253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9384518C-EDB6-4A0B-A51B-DBAD9610B253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9384518C-EDB6-4A0B-A51B-DBAD9610B253}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9384518C-EDB6-4A0B-A51B-DBAD9610B253} = {A970A231-5960-4227-8910-F8A2DDA76853}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AE355C1-7E0E-43EC-B155-BB2DC6A50B03}
+	EndGlobalSection
+EndGlobal
