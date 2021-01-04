@@ -6,19 +6,13 @@
     <Description>NativoPlusStudio.AuthToken.Fis is part of the NativoPlusStudio.AuthToken set of libraries that can be used to retrieve the auth token to be able to interface with the FIS SOAP APIs.</Description>
     <PackageProjectUrl>https://github.com/nativoplus/NativoPlusStudio.AuthToken.Fis</PackageProjectUrl>
     <PackageTags>auth token fis</PackageTags>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Handlebars.Net" Version="2.0.3" />
     <PackageReference Include="NativoPlusStudio.AuthToken.Core" Version="1.0.9" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="SoapCommands\AuthCommand.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

@@ -14,13 +14,13 @@ namespace NativoPlusStudio.AuthToken.FisTests
         public FisTests()
         {
             tokenGenerator = serviceProvider.GetRequiredService<IAuthTokenGenerator>();
-            fcsClient = serviceProvider.GetRequiredService<FisHttpClient>();
+            //fcsClient = serviceProvider.GetRequiredService<FisHttpClient>();
         }
 
         //[TestMethod]
-        //public void Test()
+        //public void Test1()
         //{
-        //    var lol = tokenGenerator.GetTokenAsync("FIS").GetAwaiter().GetResult();
+        //    var token = tokenGenerator.GetTokenAsync("FIS").GetAwaiter().GetResult();
         //    Assert.IsTrue(true);
         //}
 

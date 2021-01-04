@@ -106,8 +106,7 @@ namespace NativoPlusStudio.AuthToken.FIS
         {
             _logger.Information($"#GetAuthCommand");
 
-            var soapString = File.ReadAllText($"{AppContext.BaseDirectory}/{AllMagicStrings.AuthCommand}");
-            var template = Handlebars.Compile(soapString);
+            var template = Handlebars.Compile(AllMagicStrings.AuthCommand);
 
             var data = new
             {
@@ -117,8 +116,6 @@ namespace NativoPlusStudio.AuthToken.FIS
 
             var result = template(data);
             return result;
-            //var content = new StringContent(result, Encoding.UTF8, "application/xml");
-            //return content;
         }
 
         private void TokenCacheUpsert(string protectedResource, ITokenResponse tokenResponse)
