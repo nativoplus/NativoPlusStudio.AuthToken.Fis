@@ -5,3 +5,5 @@ NativoPlusStudio.AuthToken.Fis is part of the NativoPlusStudio.AuthToken set of 
 https://github.com/nativoplus/NativoPlusStudio.AuthToken.SymmetricEncryption 
 https://github.com/nativoplus/NativoPlusStudio.AuthToken.SqlServerCaching 
 https://github.com/nativoplus/NativoPlusStudio.AuthToken.Core
+
+Documentation coming soon...
