@@ -32,7 +32,7 @@ namespace NativoPlusStudio.AuthToken.FIS
 
         public async Task<ITokenResponse> GetTokenAsync()
         {
-            _logger.Information("FicosoAuthTokenProvider GetTokenAsync start");
+            _logger.Information("FisAuthTokenProvider GetTokenAsync start");
             try
             {
                 if (_tokenCacheService != null)
@@ -120,7 +120,7 @@ namespace NativoPlusStudio.AuthToken.FIS
 
         private void TokenCacheUpsert(string protectedResource, ITokenResponse tokenResponse)
         {
-            _logger.Information("FicosoAuthTokenProvider TokenCacheUpsert start");
+            _logger.Information("FisAuthTokenProvider TokenCacheUpsert start");
 
             string tokenTobeStored;
             if (tokenResponse.EncryptedToken != null)
@@ -149,7 +149,7 @@ namespace NativoPlusStudio.AuthToken.FIS
 
         private ITokenResponse GetTokenFromCache(IAuthTokenDetails cachedToken)
         {
-            _logger.Information("FicosoAuthTokenProvider GetTokenFromCache start");
+            _logger.Information("FisAuthTokenProvider GetTokenFromCache start");
 
             var decryptedToken = _symmetricEncryption != null ? _symmetricEncryption.Decrypt(cachedToken.Token) : cachedToken.Token;
             return new TokenResponse()
