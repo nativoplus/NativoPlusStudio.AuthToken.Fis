@@ -10,18 +10,18 @@ namespace NativoPlusStudio.AuthToken.FIS.Extensions
 {
     public static class FisServiceCollectionExtensions
     {
-        public static void AddFisAuthTokenProvider(this IAuthTokenProviderBuilder builder,
+        public static IServiceCollection AddFisAuthTokenProvider(this IServiceCollection services,
             Action<FisAuthTokenOptions, AuthTokenServicesBuilder> actions
             )
         {
             var fisOptions = new FisAuthTokenOptions();
-            var servicesBuilder = new AuthTokenServicesBuilder() { Services = builder.Services };
+            var servicesBuilder = new AuthTokenServicesBuilder() { Services = services };
 
             actions.Invoke(fisOptions, servicesBuilder);
 
-            builder.AddTokenProviderHelper(fisOptions.ProtectedResource, () =>
+            services.AddTokenProviderHelper(fisOptions.ProtectedResource, () =>
             {
-                builder.Services.Configure<FisAuthTokenOptions>(f =>
+                services.Configure<FisAuthTokenOptions>(f =>
                 {
                     f.BaseUrl = fisOptions.BaseUrl;
                     f.UserName = fisOptions.UserName;
@@ -31,7 +31,7 @@ namespace NativoPlusStudio.AuthToken.FIS.Extensions
                     f.CheckSystems = fisOptions.CheckSystems;
                 });
 
-                builder.Services
+                services
                 .AddHttpClient<IAuthTokenProvider, FisAuthTokenProvider>(client =>
                 {
                     client.DefaultRequestHeaders.Add("SOAPAction", "");
@@ -48,9 +48,11 @@ namespace NativoPlusStudio.AuthToken.FIS.Extensions
                     durationOfBreak: TimeSpan.FromSeconds(30)
                 ));
 
-                builder.Services.AddTransient(implementationFactory => servicesBuilder.EncryptionService);
-                builder.Services.AddTransient(implementationFactory => servicesBuilder.TokenCacheService);
+                services.AddTransient(implementationFactory => servicesBuilder.EncryptionService);
+                services.AddTransient(implementationFactory => servicesBuilder.TokenCacheService);
             });
+
+            return services;
         }
     }
 }

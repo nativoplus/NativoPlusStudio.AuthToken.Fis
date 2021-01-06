@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
-using NativoPlusStudio.AuthToken.Core.Extensions;
 using NativoPlusStudio.AuthToken.FIS.Extensions;
 
 namespace NativoPlusStudio.AuthToken.FisTests
@@ -20,10 +19,7 @@ namespace NativoPlusStudio.AuthToken.FisTests
 
             var services = new ServiceCollection();
 
-            services
-                .AddAuthTokenProvider(tokenProviderBuilder =>
-                {
-                    tokenProviderBuilder.AddFisAuthTokenProvider((options, builder) =>
+            services.AddFisAuthTokenProvider((options, builder) =>
                     {
                         options.AddFisOptions(
                             protectedResource: "FIS",
@@ -33,7 +29,7 @@ namespace NativoPlusStudio.AuthToken.FisTests
                             url: "https://penleyincqa.penleyinc.com/fissoap1/services/",
                             includeEncryptedTokenInResponse: true
                         );
-                    });
+                    
                 });
 
             services.AddHttpClient<FisHttpClient>((provider, client) => {

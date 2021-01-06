@@ -32,23 +32,28 @@ namespace NativoPlusStudio.AuthToken.FIS.Extensions
                     (message) => message.StatusCode == HttpStatusCode.InternalServerError,
                     async (message) =>
                     {
-                        string stringContent = await message.Content.ReadAsStringAsync(); // Could wrap this line in an additional policy as desired.
-                        var innerTextInNode = stringContent
-                            .GetXmlDocument()
-                            .GetInnerTextInNode(AllMagicStrings.ErrorMessageNodeInFisResponse);
-
-                        if (!string.IsNullOrEmpty(innerTextInNode))
-                        {
-                            if (message.StatusCode == HttpStatusCode.InternalServerError && (innerTextInNode?.Contains("Session Invalid") ?? false))
-                            {
-                                message.StatusCode = HttpStatusCode.Unauthorized;
-                            }
-                        }
-                        return message;
+                        return await SetToUnauthorizedIfSessionIsInvalid(message);
                     }
                 )));
 
             return builder;
+        }
+
+        private static async Task<HttpResponseMessage> SetToUnauthorizedIfSessionIsInvalid(HttpResponseMessage message)
+        {
+            string stringContent = await message.Content.ReadAsStringAsync();
+            var innerTextInNode = stringContent
+                .GetXmlDocument()
+                .GetInnerTextInNode(AllMagicStrings.ErrorMessageNodeInFisResponse);
+
+            if (!string.IsNullOrEmpty(innerTextInNode))
+            {
+                if (message.StatusCode == HttpStatusCode.InternalServerError && (innerTextInNode?.Contains("Session Invalid") ?? false))
+                {
+                    message.StatusCode = HttpStatusCode.Unauthorized;
+                }
+            }
+            return message;
         }
 
         private static async Task UpdateHttpRequestMessage(IAuthTokenGenerator generator, HttpRequestMessage message, string protectedResource)
