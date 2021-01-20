@@ -1,32 +1,25 @@
 ﻿using HandlebarsDotNet;
-using Microsoft.Extensions.Options;
-using NativoPlusStudio.AuthToken.FIS.Configuration;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace NativoPlusStudio.AuthToken.FisTests
+namespace FisLib
 {
     public class FisHttpClient
     {
         HttpClient _client;
-        //FisAuthTokenOptions _options;
-        public FisHttpClient(HttpClient client/*, IOptions<FisAuthTokenOptions> options*/)
+        public FisHttpClient(HttpClient client)
         {
             _client = client;
         }
 
-        public async Task<HttpResponseMessage> GetFillingAsync(string v)
+        public async Task<HttpResponseMessage> ChexSystems(string authToken)
         {
-            var resp = await _client.PostAsync("chexsystems?wsdl", GetContent(v));
+            var resp = await _client.PostAsync("chexsystems?wsdl", GetContent(authToken));
             return resp;
         }
 
@@ -43,7 +36,7 @@ namespace NativoPlusStudio.AuthToken.FisTests
                 Country =  QualifileWebRequest.Countries.US,
                 Ssn = "",
                 DriverLicenseNumber = "",
-                DriverLicenseState= "",
+                DriverLicenseState= "MO",
                 PhoneNumber= "",
                 BirthDate = new DateTime(1946,3,5),
                 UserDefinedRecord= ""
@@ -51,6 +44,7 @@ namespace NativoPlusStudio.AuthToken.FisTests
             var soapString = File.ReadAllText($"{AppContext.BaseDirectory}/{MyStrings.CallCheckString}");
             var template = Handlebars.Compile(soapString);
             var country = model?.Country.ToDescriptionString().ToUpper();
+
             var data = new
             {
                 AuthToken = authToken,
@@ -64,7 +58,7 @@ namespace NativoPlusStudio.AuthToken.FisTests
                 InquiryId = "",
                 LocationId = "",
                 QualifileVersion = "",
-                Staging = "",
+                Staging = "true",
                 StrategyTypeId = "",
                 UserDefinedTransaction = "",
                 BirthDate = model?.BirthDate.ConvertToMMDDYYYY(),

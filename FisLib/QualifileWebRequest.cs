@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NativoPlusStudio.AuthToken.FisTests
+namespace FisLib
 {
     public partial class QualifileWebRequest 
     {

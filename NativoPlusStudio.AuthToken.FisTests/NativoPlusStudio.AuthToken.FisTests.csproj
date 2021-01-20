@@ -22,14 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FisLib\FisLib.csproj" />
     <ProjectReference Include="..\NativoPlusStudio.AuthToken.FIS\NativoPlusStudio.AuthToken.FIS.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="GetCallChexSystemsServiceV001.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
